@@ -1,0 +1,21 @@
+<h1>Calculator#input</h1>
+<p>Find me in app/views/calculator/input.html.erb</p>
+
+<form action='/calculator/result'>
+    <p>원하는 기간의 헬스장 이용권 가격</p>
+    <input type = 'number' name='acq_price'>원
+    <p>헬스장 이용기간(개월) *최대 36개월</p>
+    <input type = 'number' name ='acq_period' min='1' max='36'>
+    <p>양도가(양도료 포함)</p>
+    <input type = 'number' name='trans_price' >원 <!--max='acq_price'--> 
+    <p>만료일</p>
+    <input type = 'date' name='trans_date'>
+    <!--<p>pt 여부</p>-->
+    <!--<input type='radio' value='y' checked>-->
+    <!--<input type='radio' value='n'>-->
+    <!--<p>pt잔여횟수</p>-->
+    <!--<input type = 'number' min='1' max='50'>-->
+    
+    <input type = 'submit'>
+</form>
+
