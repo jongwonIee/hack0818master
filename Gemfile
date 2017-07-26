@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
-#회원가입
+# 회원가입
 gem 'devise'
+# 한글패치
+gem 'devise-i18n'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record

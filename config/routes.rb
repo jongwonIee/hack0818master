@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  
+  get 'user/mypage'
+
+  root 'home#main'
+  get 'home/main'
+
    resources :posts do
-    resources :comments, only: [:create]
+   resources :comments, only: [:create]
   end
 
-  root 'posts#index'
-  
+
   devise_for :users
   get 'calculator/input' => 'calculator#input'
 

@@ -5,7 +5,7 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
-
+ 
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %>
@@ -19,8 +19,8 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+    <%= f.submit "회원가입" %>
+  </div>  
 <% end %>
 
 <%= render "devise/shared/links" %>
