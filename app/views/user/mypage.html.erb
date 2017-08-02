@@ -1,6 +1,8 @@
 <h1>User#mypage</h1>
 <p>Find me in app/views/user/mypage.html.erb</p>
-    <%= link_to '마이페이지', user_mypage_path %>
-    <%= link_to '올린글', user_mypage_path %>
+    <%= link_to '나의 회원정보', user_mypage_path %>
+    <%= link_to '비밀번호 변경', user_password_path %>
+    <%= link_to '회원정보 변경', user_password_path %>
     <%= link_to '스크랩', user_mypage_path %>
-
+    <%= link_to '내가 쓴 글', user_mypage_path %>
+    <%= link_to '회원탈퇴', user_session_path %>

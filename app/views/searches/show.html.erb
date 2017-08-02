@@ -1,0 +1,16 @@
+<h1>검색 결과</h1>
+
+<p><%= link_to '뒤로 가기', new_search_path %></p>
+
+<% if @search.search_posts.empty? %>
+  <p>검색 결과가 없습니다</p>
+<% else %>
+  <% search.search_posts.each do |c| %>
+  <br>
+  <div class = "div">
+      <h1><%= c.title %></h1>
+      <p>Category:<%= c.category %></p>
+  </div>
+  
+  <% end %>
+  <% end %>

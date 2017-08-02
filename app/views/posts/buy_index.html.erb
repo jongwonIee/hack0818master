@@ -1,0 +1,299 @@
+<h1>사요</h1>
+
+<div id=outer>
+
+search
+<%= form_tag posts_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<% end %>
+
+<%= link_to "상세 검색", new_search_path %>
+
+<br>
+전체 글
+<br>
+<% @posts.each do |p| %>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+강남구
+<br>
+<%@posts_1.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+강동구
+<br>
+<%@posts_2.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+강북구
+<br>
+<%@posts_3.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+강서구
+<br>
+<%@posts_4.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+관악구
+<br>
+<%@posts_5.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+광진구
+<br>
+<%@posts_6.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <br>
+<% end %>
+
+<br>
+구로구
+<br>
+<%@posts_7.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+금천구
+<br>
+<%@posts_8.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+노원구
+<br>
+<%@posts_9.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+도봉구
+<br>
+<%@posts_10.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+동대문구
+<br>
+<%@posts_11.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %>
+    </div>
+    <br>
+<% end %>
+
+<br>
+동작구
+<br>
+<%@posts_12.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+마포구
+<br>
+<%@posts_13.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+서대문구
+<br>
+<%@posts_14.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+서초구
+<br>
+<%@posts_15.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+성동구
+<br>
+<%@posts_16.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+성북구
+<br>
+<%@posts_17.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %>
+    </div>
+    <br>
+<% end %>
+
+<br>
+송파구
+<br>
+<%@posts_18.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+양천구
+<br>
+<%@posts_19.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+영등포구
+<br>
+<%@posts_20.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+용산구
+<br>
+<%@posts_21.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %>
+    </div>
+    <br>
+<% end %>
+
+<br>
+은평구
+<br>
+<%@posts_22.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+종로구
+<br>
+<%@posts_23.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+
+<br>
+중구
+<br>
+<%@posts_24.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %>  
+    </div>
+    <br>
+<% end %>
+
+<br>
+중랑구
+<br>
+<%@posts_25.each do |p|%>
+<div id=inner>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    </div>
+    <br>
+<% end %>
+</div>

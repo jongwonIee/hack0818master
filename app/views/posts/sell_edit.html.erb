@@ -1,0 +1,15 @@
+<h1>Posts#new</h1>
+<p>Find me in app/views/posts/new.html.erb</p>
+
+<%= form_for @post do |f| %>
+    제목 : <%= f.text_field :title %><br>
+    지역 : (자동 입력)<br>
+    [운동 유형 선택]<br>
+    기관 이름 : <%= f.text_area :name, rows: '3' %><br>
+    회원권 취득가 : <%= f.text_area :price %><br>
+    회원권 만료일 : <%= f.text_area :date %><br>
+    회원권 희망 양도비 : <%= f.text_area :money %><br>
+    양도 사유 : <%= f.text_area :reason, rows: '5' %><br>
+    부가 설명 : <%= f.text_area :content,  rows: '7' %><br>
+    <%= f.submit %>
+<% end %>

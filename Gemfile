@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem 'devise'
 # 한글패치
 gem 'devise-i18n'
+# db보기
+gem 'rails_db'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
