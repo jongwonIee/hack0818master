@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'map/main'
+
   get 'user/mypage'
 
   root 'home#main'
@@ -21,6 +23,8 @@ get 'searches/new' => 'searches#new', as: 'searches_new'
   get 'calculator/input' => 'calculator#input'
 
   get 'calculator/result'=> 'calculator#result'
+  
+  get 'map/main' => 'map#main'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
