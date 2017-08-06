@@ -6,6 +6,9 @@ gem 'devise'
 gem 'devise-i18n'
 # db보기
 gem 'rails_db'
+# 권한부여
+gem 'cancancan'
+gem 'rolify'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

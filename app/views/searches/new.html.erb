@@ -1,5 +1,5 @@
 <h1>상세 검색</h1>
-<%= form_for @search do |s| %>
+<%= form_for Search.new, url: search_field_tag(@search), html: {class: "pure-form"} do |s| %>
 
 <div class = "fleid">
     <%= s.label :keywords %> <br>
@@ -8,13 +8,12 @@
 
 <div class = "fleid">
     <%= s.label :category %> <br>
-    <%= s.select :category, options_for_select(@categories), include_blank => true  %><br> 
+    <%= s.select :category, options_for_select(@categories) %><br> 
 </div>
 
 <div class = "actions">
-    <% s.submit %> 
+    <% s.submit "Search", class: "pure-button pure-button-primary" %> 
 </div>
 
 <% end %>
 
-<p><%= link_to '뒤로 가기', posts_sell_index_path %></p>

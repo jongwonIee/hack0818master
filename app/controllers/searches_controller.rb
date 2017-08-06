@@ -2,7 +2,8 @@ class SearchesController < ApplicationController
     
     def new
         @search = Search.new
-        @categories = Post(:category)
+        @categories = Post.new[:category]
+        @categories=Category.all
         
     end
     

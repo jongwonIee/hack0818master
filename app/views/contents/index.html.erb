@@ -2,15 +2,35 @@
 
 <div id=outer>
 
-search
+검색
 <%= form_tag posts_path, :method => 'get' do %>
     <p>
       <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
+      <%= submit_tag "검색", :name => nil %>
     </p>
 <% end %>
 
-<%= link_to "상세 검색", new_search_path %>
+<!--<%= form_for Search.new, url: search_field_tag(@search) do |s| %>-->
+
+<!--<div class = "fleid">-->
+<!--    <%= s.label :keywords %> <br>-->
+<!--    <%= s.text_field :keywords %><br> -->
+<!--</div>-->
+
+<!--<div class = "fleid">-->
+<!--    <%= s.label :category %> <br>-->
+<!--    <%= s.select :category, options_for_select(@categories) %><br>-->
+<!--</div>-->
+
+<!--<div class = "actions">-->
+<!--    <% s.submit %> -->
+<!--</div>-->
+
+<!--<% end %>-->
+
+<% @posts.each do |p| %>
+<%= link_to '상세 검색', new_content_search_path(content_id: p.id) %>
+<% end %>
 
 <br>
 전체 글

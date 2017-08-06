@@ -12,32 +12,54 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <br><div class="field">
+    <%= f.label :password %> <i>(변경하고 싶지 않으시다면 공란으로 두십시오)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em>(<%= @minimum_password_length %> 글자 이상)</em>
     <% end %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+  </div><br>
 
+  <div class="field">
+    <p style="margin-bottom:0;">성별</p>
+    <label class="radio_button"> 남자
+       <%= f.radio_button :sex, '남자', checked: true %>
+    </label>
+    <label class="radio_button active"> 여자
+       <%= f.radio_button :sex, '여자', checked: true %>
+    </label>
+  </div><br>
+  
+  <div class="field">
+    <%= f.label :생년월일 %><br />
+    <%= f.date_field :birth %></div>
+  </div><br>
+  
+  <div class="field">
+    <%= f.label :핸드폰번호 %><br />
+    <%= f.telephone_field :phone %></div>
+  </div><br> 
+
+  <div class="field">
+    <%= f.label :운동일수 %> (일주일 간 평균 운동일수)<br />
+    0   <%= f.range_field :howmany, max: 7, min: 0, step: 1 %>   7
+  </div><br>
+  
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p><%= button_to "계정삭제", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>

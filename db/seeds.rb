@@ -1,33 +1,13 @@
-puts "Inserting category data"
-[
-    ["강남구"],
-    ["강동구"],
-    ["강북구"],
-    ["강서구"],
-    ["관악구"],
-    ["광진구"],
-    ["구로구"],
-    ["금천구"],
-    ["노원구"],
-    ["도봉구"],
-    ["동대문구"],
-    ["동작구"],
-    ["마포구"],
-    ["서대문구"],
-    ["서초구"],
-    ["성동구"],
-    ["성북구"],
-    ["송파구"],
-    ["양천구"],
-    ["영등포구"],
-    ["용산구"],
-    ["은평구"],
-    ["종로구"],
-    ["중구"],
-    ["중랑구"],
-].each do |x|
-    Category.create(name:x[0])
+puts "inserting Seoul-Gu-es and coordinates (SEED)"
+# 카테고리 모델 db에 name:구 명 , coor_lat: 위도, coor_long: 경도 넣습니다. 
+seoul_gu = JSON.parse(File.read("db/seoul_gu.json"))
+seoul_gu["DATA"].each do |x|
+    Category.create(name: x["SIG_KOR_NM"], coor_lat: x["LAT"], coor_long: x["LNG"] )
 end
+
+
+
+
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).

@@ -44,11 +44,11 @@
   <div class="field">
     <%= f.label :핸드폰번호 %><br />
     <%= f.telephone_field :phone %></div>
-  </div><br>
+  </div><br> 
 
   <div class="field">
-    <%= f.label :운동횟수 %><br />
-    <%= f.range_field :howmany %></div>
+    <%= f.label :운동일수 %> (일주일 간 평균 운동일수)<br />
+    0   <%= f.range_field :howmany, max: 7, min: 0, step: 1 %>   7
   </div><br>
   
   <div class="actions">

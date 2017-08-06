@@ -29,8 +29,17 @@ class ContentsController < ApplicationController
     @posts_25=@posts.where(category_id:25)
     
     @posts = Post.search(params[:search])
+    @categories=Category.all
     
   end
   
+   def show
+    @post=Post.find(params[:id])
+    @categories=Category.all
+  end
+  
+  def post_params
+    params.require(:post).permit(:title, :content, :category_id)
+  end
   
 end
