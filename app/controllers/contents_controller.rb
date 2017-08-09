@@ -31,11 +31,15 @@ class ContentsController < ApplicationController
     @posts = Post.search(params[:search])
     @categories=Category.all
     
+    @comments = Comment.new
+    
   end
   
    def show
     @post=Post.find(params[:id])
     @categories=Category.all
+    
+    @comments = Comment.new
   end
   
   def post_params

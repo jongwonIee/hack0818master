@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users  
+  resources :sessions, only: [:new, :create, :destroy]
+  
   get 'map/main'
 
   get 'user/mypage'
@@ -19,7 +22,7 @@ get 'searches/new' => 'searches#new', as: 'searches_new'
   end
 
 
-  devise_for :users
+
   get 'calculator/input' => 'calculator#input'
 
   get 'calculator/result'=> 'calculator#result'

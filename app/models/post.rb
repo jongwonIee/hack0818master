@@ -1,7 +1,8 @@
 class Post < ActiveRecord::Base
+    belongs_to :user
     belongs_to :category
-    has_many :comments
-    
+     has_many :comments
+     
     def self.search(search)
         if search
             where('title LIKE ?', "%#{search}%")

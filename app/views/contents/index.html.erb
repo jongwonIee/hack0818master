@@ -10,24 +10,6 @@
     </p>
 <% end %>
 
-<!--<%= form_for Search.new, url: search_field_tag(@search) do |s| %>-->
-
-<!--<div class = "fleid">-->
-<!--    <%= s.label :keywords %> <br>-->
-<!--    <%= s.text_field :keywords %><br> -->
-<!--</div>-->
-
-<!--<div class = "fleid">-->
-<!--    <%= s.label :category %> <br>-->
-<!--    <%= s.select :category, options_for_select(@categories) %><br>-->
-<!--</div>-->
-
-<!--<div class = "actions">-->
-<!--    <% s.submit %> -->
-<!--</div>-->
-
-<!--<% end %>-->
-
 <% @posts.each do |p| %>
 <%= link_to '상세 검색', new_content_search_path(content_id: p.id) %>
 <% end %>
@@ -37,19 +19,26 @@
 <br>
 <% @posts.each do |p| %>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> 
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
+
 
 <br>
 강남구
 <br>
 <%@posts_1.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> 
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -59,8 +48,11 @@
 <br>
 <%@posts_2.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -70,8 +62,11 @@
 <br>
 <%@posts_3.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -81,8 +76,11 @@
 <br>
 <%@posts_4.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -92,8 +90,11 @@
 <br>
 <%@posts_5.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -103,8 +104,11 @@
 <br>
 <%@posts_6.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     <br>
 <% end %>
 
@@ -113,8 +117,11 @@
 <br>
 <%@posts_7.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -124,8 +131,11 @@
 <br>
 <%@posts_8.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -135,8 +145,11 @@
 <br>
 <%@posts_9.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -146,8 +159,11 @@
 <br>
 <%@posts_10.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -157,8 +173,11 @@
 <br>
 <%@posts_11.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -168,8 +187,11 @@
 <br>
 <%@posts_12.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -179,8 +201,11 @@
 <br>
 <%@posts_13.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -190,8 +215,11 @@
 <br>
 <%@posts_14.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -201,8 +229,11 @@
 <br>
 <%@posts_15.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -212,8 +243,11 @@
 <br>
 <%@posts_16.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -223,8 +257,11 @@
 <br>
 <%@posts_17.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -234,8 +271,11 @@
 <br>
 <%@posts_18.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -245,8 +285,11 @@
 <br>
 <%@posts_19.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -256,8 +299,11 @@
 <br>
 <%@posts_20.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -267,8 +313,11 @@
 <br>
 <%@posts_21.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -278,9 +327,11 @@
 <br>
 <%@posts_22.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
-    </div>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> 
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     <br>
 <% end %>
 
@@ -289,9 +340,11 @@
 <br>
 <%@posts_23.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
-    </div>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %>
+    <% end %>
     <br>
 <% end %>
 
@@ -300,8 +353,11 @@
 <br>
 <%@posts_24.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %>  
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>
@@ -311,8 +367,11 @@
 <br>
 <%@posts_25.each do |p|%>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
-    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+    <% if can? :update, @content %>
+        | <%=link_to '수정하기', edit_post_path(p)%>
+        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
+    <% end %>
     </div>
     <br>
 <% end %>

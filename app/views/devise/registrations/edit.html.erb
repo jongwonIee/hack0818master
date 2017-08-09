@@ -26,7 +26,7 @@
   </div><br>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <i>(회원정보 변경을 위해서는 비밀번호가 필요합니다)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div><br>
 
@@ -56,10 +56,8 @@
   </div><br>
   
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "변경완료" %>
   </div>
 <% end %>
 
 <p><%= button_to "계정삭제", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

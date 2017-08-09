@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+
   def index
     @posts = Post.all
     @posts_1=@posts.where(category_id:1)
@@ -29,6 +29,7 @@ class PostsController < ApplicationController
     @posts_25=@posts.where(category_id:25)
     
     @posts = Post.search(params[:search])
+ 
     
   end
 
@@ -47,6 +48,8 @@ class PostsController < ApplicationController
 
   def show
     @post=Post.find(params[:id])
+    
+    @comments = Comment.new
   end
   
   def edit
