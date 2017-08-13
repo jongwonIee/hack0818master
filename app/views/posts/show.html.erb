@@ -1,10 +1,18 @@
-<h1>이 글의 카테고리는: <%=@post.category.name%></h1>
-<h1>이 글의 제목: <%=@post.title%></h1>
-<p><%=@post.name%></p>
-<p><%=@post.price%></p>
-<p><%=@post.date%></p>
-<p><%=@post.money%></p>
-<p><%=@post.reason%></p>
-<p><%=@post.content%></p>
+<% @posts.each do |p| %>
+<h1>이 글의 카테고리는: <%=p.category.name%></h1>
+<h1>이 글의 제목: <%=p.title%></h1>
+<p><%=p.name%></p>
+<p><%=p.price%></p>
+<p><%=p.date%></p>
+<p><%=p.money%></p>
+<p><%=p.reason%></p>
+<p><%=p.content%></p>
+
+    <%= form_for @comment, url: contents_comments_path(post_id: p.id) do |c| %>
+        <%= c.text_area :content %><br>
+        <%= c.submit "작성하기" %>
+    <% end %>
+    
+<% end %>
+
 <%=link_to '목록 보기', posts_path%>
-                        

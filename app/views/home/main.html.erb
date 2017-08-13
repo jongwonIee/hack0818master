@@ -1,18 +1,5 @@
 <h1>Home#main</h1>
 <p>Find me in app/views/home/main.html.erb</p>
 <h1>메인페이지</h1>
-
-
-<br>
-<% if user_signed_in? %>
-    <%= link_to '로그아웃', destroy_user_session_path, method: 'delete' %>
-    <%= link_to '마이페이지', user_mypage_path %>
-<% else %>
-    <%= link_to '로그인',  new_user_session_path %>
-    <%= link_to '회원가입', new_user_registration_path %>
-<% end %>
-<br><br>
 <%= link_to '사요', contents_path %>
 <%= link_to '팔아요', posts_path %>
-
-<br><br>

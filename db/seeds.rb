@@ -5,7 +5,17 @@ seoul_gu["DATA"].each do |x|
     Category.create(name: x["SIG_KOR_NM"], coor_lat: x["LAT"], coor_long: x["LNG"] )
 end
 
-
+puts "inserting sports types (SEED)"
+[
+    ["헬스"],
+    ["요가, 필라테스"],
+    ["수영"],
+    ["체육관"],
+    ["기타"]
+].each do |x|
+    Type.create(name: x[0])
+end
+ 
 
 
 

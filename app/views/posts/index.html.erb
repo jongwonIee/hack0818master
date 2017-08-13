@@ -15,11 +15,8 @@ search
 
 <% @posts.each do |p| %>
 <div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> 
-    <% if can? :update, @content %>
-        | <%=link_to '수정하기', edit_post_path(p)%>
-        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %> 
-    <% end %>
+    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%> | <%=link_to '수정하기', edit_post_path(p)%>
+    | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %>
     </div>
     <br>
 <% end %>

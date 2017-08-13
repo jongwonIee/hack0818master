@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   root 'home#main'
   get 'home/main'
 
-get 'searches/new' => 'searches#new', as: 'searches_new'
-
    resources :posts do
    resources :comments, only: [:create]
    resources :searches

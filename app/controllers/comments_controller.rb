@@ -1,13 +1,11 @@
 class CommentsController < ApplicationController
     
-
-
   def create
     comment = Comment.new(comment_params)
     comment.post_id = parmas[:post_id]
     comment.save
 
-    redirect_to contents_path
+    redirect_to content_path
   end
     
     private

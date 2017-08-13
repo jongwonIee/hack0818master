@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
 
   def index
+    
     @posts = Post.all
+    
     @posts_1=@posts.where(category_id:1)
     @posts_2=@posts.where(category_id:2)
     @posts_3=@posts.where(category_id:3)
@@ -29,14 +31,13 @@ class PostsController < ApplicationController
     @posts_25=@posts.where(category_id:25)
     
     @posts = Post.search(params[:search])
- 
     
+    @comment = Comment.new
   end
 
-  def new
+    def new
     @post = Post.new
-    @categories=Category.all
-
+    @categories = Category.all
   end
 
   def create
@@ -47,30 +48,30 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post=Post.find(params[:id])
-    
-    @comments = Comment.new
+    @post = Post.find(params[:id])
+    @comment = Comment.new
   end
-  
+
   def edit
-    @post=Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def update
-    @post=Post.find(params[:id])
+    @post = Post.find(params[:id])
     @post.update(post_params)
-    
-    redirect_to @post
+
+    redirect_to posts_path
+
   end
-  
-   def destroy
+
+  def destroy
     @post = Post.find(params[:id])
     @post.delete
 
     redirect_to posts_path
-   end
-    
+  end
+
   def post_params
     params.require(:post).permit(:title, :content, :category_id)
-  end
-end
+    end
+ end

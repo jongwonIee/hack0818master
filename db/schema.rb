@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170807113351) do
+ActiveRecord::Schema.define(version: 20170812161556) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170807113351) do
   create_table "posts", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "user_id"
+    t.integer  "type_id"
     t.string   "title"
     t.string   "name"
     t.text     "price"
@@ -65,6 +66,12 @@ ActiveRecord::Schema.define(version: 20170807113351) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -80,8 +87,8 @@ ActiveRecord::Schema.define(version: 20170807113351) do
     t.datetime "updated_at",                          null: false
     t.string   "name"
     t.string   "sex"
-    t.integer  "birth"
-    t.integer  "phone"
+    t.string   "birth"
+    t.string   "phone"
     t.integer  "howmany"
     t.boolean  "admin"
   end
