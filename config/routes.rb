@@ -1,20 +1,26 @@
 Rails.application.routes.draw do
-  devise_for :users  
-  resources :sessions, only: [:new, :create, :destroy]
+  devise_for :users
+  get 'user/myposts'
+
   
-  get 'map/main'
+  resources :sessions, only: [:new, :create, :destroy]
 
   get 'user/mypage'
 
   root 'home#main'
   get 'home/main'
 
+  
+  
    resources :posts do
    resources :comments, only: [:create]
    resources :searches
   end
   
-  resources :contents do
+  get 'contents/index'
+  post 'contents/index'
+  
+  resources :contents, except: [:create] do
   resources :comments, only: [:create]
   resources :searches
   end
@@ -25,8 +31,9 @@ Rails.application.routes.draw do
 
   get 'calculator/result'=> 'calculator#result'
   
-  get 'map/main' => 'map#main'
-
+  get 'maps/main' => 'maps#main'
+  post 'maps/main' => 'maps#main'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

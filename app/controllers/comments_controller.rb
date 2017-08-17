@@ -1,12 +1,25 @@
 class CommentsController < ApplicationController
-    
+load_and_authorize_resource    
   def create
-    comment = Comment.new(comment_params)
-    comment.post_id = parmas[:post_id]
-    comment.save
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.new(comment_params)
+    @comment.save
 
-    redirect_to content_path
+    redirect_to post_path(@post)
   end
+  
+  def edit
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+  
     
     private
     def comment_params
@@ -14,3 +27,8 @@ class CommentsController < ApplicationController
     end
     
 end
+
+
+  
+  
+  

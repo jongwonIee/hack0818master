@@ -1,8 +1,9 @@
 class Post < ActiveRecord::Base
+    resourcify
     belongs_to :user
     belongs_to :category
     belongs_to :type
-     has_many :comments
+    has_many :comments
      
     def self.search(search)
         if search

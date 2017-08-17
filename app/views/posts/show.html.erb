@@ -1,18 +1,24 @@
-<% @posts.each do |p| %>
-<h1>이 글의 카테고리는: <%=p.category.name%></h1>
-<h1>이 글의 제목: <%=p.title%></h1>
-<p><%=p.name%></p>
-<p><%=p.price%></p>
-<p><%=p.date%></p>
-<p><%=p.money%></p>
-<p><%=p.reason%></p>
-<p><%=p.content%></p>
 
-    <%= form_for @comment, url: contents_comments_path(post_id: p.id) do |c| %>
-        <%= c.text_area :content %><br>
-        <%= c.submit "작성하기" %>
-    <% end %>
-    
+
+<h1>이 글의 카테고리는: <%=@post.category.name%></h1>
+<h1>이 글의 제목: <%=@post.title%></h1>
+<p>지역 : (자동 입력)</p><br>
+<p>운동 유형 : <%=@post.type.name%></p>
+<p>기관 이름 : <%=@post.name%></p>
+<p>회원권 취득가 : <%=@post.price%></p>
+<p>회원권 만료일 : <%=@post.date%></p>
+<p>회원권 희망 양도비 : <%=@post.money%></p>
+<p>양도 사유 : <%=@post.reason%></p>
+<p>부가 설명 : <%=@post.content%></p>
+
+<% @post.comments.each do |cmt| %>
+    <%= cmt.content %><br>
 <% end %>
 
-<%=link_to '목록 보기', posts_path%>
+<%= form_for [@post, Comment.new] do |f| %>
+  <% f.text_area :content %>
+  <% f.submit %>
+<% end %>    
+
+
+<%=link_to '목록 보기', contents_path%>

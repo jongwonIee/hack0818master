@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812161556) do
+ActiveRecord::Schema.define(version: 20170813120148) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.float    "coor_lat"
-    t.float    "coor_long"
+    t.float    "coorlat"
+    t.float    "coorlong"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,9 +33,21 @@ ActiveRecord::Schema.define(version: 20170812161556) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "our_dbs", force: :cascade do |t|
+    t.float    "coorlat"
+    t.float    "coorlong"
+    t.string   "name"
+    t.string   "roadAddress"
+    t.string   "tel"
+    t.string   "location"
+    t.integer  "type_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "posts", force: :cascade do |t|
-    t.integer  "category_id"
     t.integer  "user_id"
+    t.integer  "category_id"
     t.integer  "type_id"
     t.string   "title"
     t.string   "name"

@@ -1,0 +1,49 @@
+<h1>Map#main</h1>
+<p>Find me in app/views/map/main.html.erb</p>
+
+<% if @place %>
+    <%= form_tag do %>
+        <%= select_tag 'input_district', options_for_select(  @district.collect{ |u| [u.name, u.name] }), onchange: "this.form.submit();" %>
+    <% end %>
+<% else %>
+    <%= form_tag do %>
+        <%= select_tag 'input_district', options_for_select(  @district.collect{ |u| [u.name, u.name] }.insert(0, [("선택하세요"),("선택하세요")])), selected: ("선택하세요"), onchange: "this.form.submit();" %>
+    <% end %>
+<% end %>    
+
+<div id="map" style="width:100%;height:400px;"></div>
+
+<script>
+var mapOptions = {
+    center: new naver.maps.LatLng(<%= @x %>, <%= @y %>),     
+    zoom: 10, 
+    minZoom: 9, 
+    zoomControl: true, 
+    zoomControlOptions: {
+        position: naver.maps.Position.TOP_RIGHT
+    }
+};
+
+var map = new naver.maps.Map('map', mapOptions);
+
+var markerList = [];
+naver.maps.Event.addListener(map, 'click', function(e) { //클릭시 마커생성
+    var marker = new naver.maps.Marker({
+        position: e.coord,
+        map: map
+    });
+    markerList.push(marker); 
+    markerList[0].setMap(null);
+    markerList = [];
+    markerList.push(marker);
+    
+    
+    console.log(markerList[0]['position']['_lat'] + 'and' + markerList[0]['position']['_lng']); //이건 이렇게 access하면 된다. 
+});
+
+
+
+
+var latlng = map.getCenter(); 
+console.log("latlng variable is " + latlng._lat + 'and' + latlng._lng); // latlng 의 자료형이 따로 없고 그냥 object인 듯 하다. 이를 이렇게 콜하면 된다. 
+</script>

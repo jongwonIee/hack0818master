@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+load_and_authorize_resource
   def index
     
     @posts = Post.all
@@ -29,24 +30,34 @@ class PostsController < ApplicationController
     @posts_24=@posts.where(category_id:24)
     @posts_25=@posts.where(category_id:25)
     
+    @posts_health=@posts.where(type_id:1)
+    @posts_yoga=@posts.where(type_id:2)
+    @posts_swim=@posts.where(type_id:3)
+    @posts_gym=@posts.where(type_id:4)
+    @posts_etc=@posts.where(type_id:5)
+    
     @posts = Post.search(params[:search])
     
     @comment = Comment.new
+    
   end
 
     def new
     @post = Post.new
     @categories = Category.all
+    @types = Type.all
   end
 
   def create
     post = Post.new(post_params)
+    user_id = current_user.id
     post.save
 
     redirect_to posts_path
   end
 
   def show
+    @posts = Post.all
     @post = Post.find(params[:id])
     @comment = Comment.new
   end
@@ -71,6 +82,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :category_id)
+    params.require(:post).permit(:title, :content, :category_id, :type_id, :user_id)
     end
  end

@@ -1,6 +1,18 @@
 class ContentsController < ApplicationController
+load_and_authorize_resource 
+
+  def index
+  
+  
+    @district = Category.all
+    @query = params[:input_district]
     
-    def index
+    if !@query
+      @reuslt = ''
+    else
+      @result = Post.joins(:category).merge(Category.where(name: @query))
+    end      
+        
     @posts = Post.all
     @posts_1=@posts.where(category_id:1)
     @posts_2=@posts.where(category_id:2)
@@ -27,6 +39,12 @@ class ContentsController < ApplicationController
     @posts_23=@posts.where(category_id:23)
     @posts_24=@posts.where(category_id:24)
     @posts_25=@posts.where(category_id:25)
+    
+    @posts_health=@posts.where(type_id:1)
+    @posts_yoga=@posts.where(type_id:2)
+    @posts_swim=@posts.where(type_id:3)
+    @posts_gym=@posts.where(type_id:4)
+    @posts_etc=@posts.where(type_id:5)
     
     @posts = Post.search(params[:search])
     @categories=Category.all

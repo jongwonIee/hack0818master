@@ -1,8 +1,8 @@
 puts "inserting Seoul-Gu-es and coordinates (SEED)"
-# 카테고리 모델 db에 name:구 명 , coor_lat: 위도, coor_long: 경도 넣습니다. 
+# 카테고리 모델 db에 name:구 명 , coorlat: 위도, coorlong: 경도 넣습니다. 
 seoul_gu = JSON.parse(File.read("db/seoul_gu.json"))
 seoul_gu["DATA"].each do |x|
-    Category.create(name: x["SIG_KOR_NM"], coor_lat: x["LAT"], coor_long: x["LNG"] )
+    Category.create(name: x["SIG_KOR_NM"], coorlat: x["LAT"], coorlong: x["LNG"] )
 end
 
 puts "inserting sports types (SEED)"

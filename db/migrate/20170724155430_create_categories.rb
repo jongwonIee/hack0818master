@@ -2,8 +2,8 @@ class CreateCategories < ActiveRecord::Migration
   def change
     create_table :categories do |t|
       t.string:name
-      t.float:coor_lat
-      t.float:coor_long
+      t.float:coorlat
+      t.float:coorlong
       t.timestamps null: false
     end
   end

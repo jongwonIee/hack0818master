@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coorlatlang: MyString
+  name: MyString
+  roadAddress: MyString
+  tel: MyString
+  location: MyString
+  kind: MyString
+
+two:
+  coorlatlang: MyString
+  name: MyString
+  roadAddress: MyString
+  tel: MyString
+  location: MyString
+  kind: MyString
