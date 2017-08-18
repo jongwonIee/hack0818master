@@ -10,7 +10,19 @@
     </p>
 <% end %>
 
-        <div id=outer>
+<% if current_user %>
+    <% if Favorite.exists?(course_id: c.id, user_id: current_user.id) %>
+        <%= button_to '관심강의에서제거', users_favorites_delete_path(u_id: current_user, c_id: c.id),
+                      method: :post, :onClick => 'alert("관심강의에서 제거되었습니다!")' %>
+    <% else %>
+        <%#= button_to '관심강의에다추가', {controller: 'users', action: 'favorites_add', u_id: current_user.id, c_id: c.id},
+                method: :post, :onClick => 'alert("관심강의에 추가되었습니다!")' %>
+        <%= button_to '관심강의에다추가',  users_favorites_add_path(u_id: current_user.id, c_id: c.id),
+                      method: :post, :onClick => 'alert("관심강의에 추가되었습니다!")' %>
+    <% end %>
+<% end %>
+
+<div id=outer>
 지역 선택
 <% if @place %>
     <%= form_tag do %>

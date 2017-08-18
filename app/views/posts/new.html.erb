@@ -9,9 +9,9 @@
      <%=f.select:type_id,options_from_collection_for_select(@types,"id","name")%><br>
      <br>
     기관 이름 : <%= f.text_area :name, rows: '3' %><br>
-    회원권 취득가 : <%= f.text_area :price %><br>
+    회원권 취득가 : <%= f.text_area :price %>원<br>
     회원권 만료일 : <%= f.text_area :date %><br>
-    회원권 희망 양도비 : <%= f.text_area :money %><br>
+    회원권 희망 양도비 : <%= f.text_area :money %>원<br>
     양도 사유 : <%= f.text_area :reason, rows: '5' %><br>
     부가 설명 : <%= f.text_area :content, rows: '7' %><br>
     <%= f.submit %>

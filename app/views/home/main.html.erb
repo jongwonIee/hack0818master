@@ -1,3 +1,28 @@
-<%= link_to (image_tag ('HENDOVER'), class: "logo"), home_main_path %>
-<%= link_to (image_tag ('팔아요')), posts_path %>
-<%= link_to (image_tag ('사요')), contents_path %>
+<%= render 'header' %>
+
+<div class="logo-div">
+    <%= link_to (image_tag ('HENDOVER'), class: "logo"), home_main_path %>
+    <%= link_to (image_tag ('팔아요')), posts_path %>
+    <%= link_to (image_tag ('사요')), contents_path %>
+</div>
+
+<style>
+    img.logo {
+        width: 40em;
+        height: 29.5em;
+        display: block;
+        margin: 10em auto;
+    }
+    
+    img.sell {
+        width: 5em;
+        height: 5em;
+        display: block;
+    }
+    
+    img.buy {
+        width: 5em;
+        height: 5em;
+        display: block;
+    }
+</style>

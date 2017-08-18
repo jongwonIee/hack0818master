@@ -3,10 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #search{
-    float:right;
     padding-right:20px;
 }
 
 #inner{
     text-align:center;
+    position:relative;
+}
+
+#new{
+    float:left;
+    
+}
+
+h1{
+    padding-left:20px;
+}
+
+body{
+    padding-left:30px;
 }
