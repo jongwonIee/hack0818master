@@ -14,6 +14,10 @@
 <div id="map" style="width:100%;height:400px;"></div>
 
 <script>
+
+// $(document).ready(main);
+
+// ***네이버 맵 로드, 맵 기본 옵션 설정. 
 var mapOptions = {
     center: new naver.maps.LatLng(<%= @x %>, <%= @y %>),     
     zoom: 10, 
@@ -26,8 +30,134 @@ var mapOptions = {
 
 var map = new naver.maps.Map('map', mapOptions);
 
+// ***우리 DB에서 체육관정보 가져와서 마커로 표시. 
+
+var OUR_SELLER_DB = []; //DB의 정보를 꺼내서 json data로 만든다. 
+<% @db_json.each do |p|%>
+    OUR_SELLER_DB.push(<%=raw p.to_json %>);
+<% end %> 
+
+
+
+var bounds = map.getBounds(),
+    southWest = bounds.getSW(),
+    northEast = bounds.getNE(),
+    lngSpan = northEast.lng() - southWest.lng(),
+    latSpan = northEast.lat() - southWest.lat();
+
+var markers = [], //DB의 체육관 마커들. 
+    infoWindows = []; //각 체육관 마커의 정보창 
+
+for (var item in OUR_SELLER_DB) {
+    
+    var position = new naver.maps.LatLng(
+        OUR_SELLER_DB[item]["lat"],
+        OUR_SELLER_DB[item]['lng']);
+
+
+
+    var marker = new naver.maps.Marker({
+        map: map,
+        position: position,
+        title: OUR_SELLER_DB[item]["name"],
+        icon: {
+        content: '<img src="https://image.flaticon.com/icons/svg/33/33622.svg" alt="" ' +
+                 'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 35px; left: 0px; top: 0px;">',
+        size: new naver.maps.Size(22, 35),
+        anchor: new naver.maps.Point(11, 35)
+        }
+
+    });
+    
+    var contentString = [
+        `<div class="iw_inner">`,
+        `   <h3>${OUR_SELLER_DB[item]['name']}</h3>`, //헬스장 이름
+        `   <h4>양도가: ${OUR_SELLER_DB[item]['money']}</h4> <br />`,
+        `   <h4>만료일: ${OUR_SELLER_DB[item]['date']}</h4> <br />`,
+        `   <a href="https://hack0818master-jaepilchoi.c9users.io/posts/${OUR_SELLER_DB[item]['id']}" target="_blank">자세한 내용 보기</a>`,
+        `</div>`
+    ].join('');
+    
+    var infoWindow = new naver.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 140,
+        backgroundColor: "#eee",
+        borderColor: "#2db400",
+        borderWidth: 5,
+        anchorSize: new naver.maps.Size(30, 30),
+        anchorSkew: true,
+        anchorColor: "#eee",
+        pixelOffset: new naver.maps.Point(20, -20)
+    });
+
+
+    markers.push(marker);
+    infoWindows.push(infoWindow);
+};
+
+
+// ***맵에서 보이는 부분만 마커 표시 
+naver.maps.Event.addListener(map, 'idle', function() {
+    updateMarkers(map, markers);
+});
+
+function updateMarkers(map, markers) {
+
+    var mapBounds = map.getBounds();
+    var marker, position;
+
+    for (var i = 0; i < markers.length; i++) {
+
+        marker = markers[i]
+        position = marker.getPosition();
+
+        if (mapBounds.hasLatLng(position)) {
+            showMarker(map, marker);
+        } else {
+            hideMarker(map, marker);
+        }
+    }
+}
+
+function showMarker(map, marker) {
+
+    if (marker.setMap()) return;
+    marker.setMap(map);
+}
+
+function hideMarker(map, marker) {
+
+    if (!marker.setMap()) return;
+    marker.setMap(null);
+}
+
+//***사요 DB 누르면 정보창 표시 - 각각의 marker에 대응하게 해 주어야 함. 
+
+function getClickHandler(seq) { // 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+    return function(e) {
+        var marker = markers[seq],
+            infoWindow = infoWindows[seq];
+
+        if (infoWindow.getMap()) {
+            infoWindow.close();
+        } else {
+            infoWindow.open(map, marker);
+        }
+    }
+}
+
+for (var i=0, ii=markers.length; i<ii; i++) {
+    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+}
+
+// infowindow.open(map, marker); //인포윈도우를 켜진 상태로 시작하는 것. 우리는 꺼진 상태로 시작해야. 
+
+
+ //***팔아요 작성을 위해 클릭시 마커생성 + 마터의 위치좌표 컨트롤러에 전달. 
+
 var markerList = [];
-naver.maps.Event.addListener(map, 'click', function(e) { //클릭시 마커생성
+naver.maps.Event.addListener(map, 'click', function(e) {
     var marker = new naver.maps.Marker({
         position: e.coord,
         map: map
@@ -37,13 +167,20 @@ naver.maps.Event.addListener(map, 'click', function(e) { //클릭시 마커생�
     markerList = [];
     markerList.push(marker);
     
+    jQuery.ajax({ // 클릭할 때마다 AJAX를 통해 좌표를 controller로 보낸다. 
+    //   data: {'lat=':markerList[0]['position']['_lat'], 'lng':markerList[0]['position']['_lng']},
+      data: 'lat=' + markerList[0]['position']['_lat'] + '&lng=' + markerList[0]['position']['_lng'],
+      dataType: 'script',
+    //   dataType: 'json',
+      type: 'post',
+      url: "/maps/main"
+    });
     
-    console.log(markerList[0]['position']['_lat'] + 'and' + markerList[0]['position']['_lng']); //이건 이렇게 access하면 된다. 
+    // console.log(markerList[0]['position']['_lat'] + 'and' + markerList[0]['position']['_lng']); //이건 이렇게 access하면 된다. 
 });
 
 
 
-
-var latlng = map.getCenter(); 
-console.log("latlng variable is " + latlng._lat + 'and' + latlng._lng); // latlng 의 자료형이 따로 없고 그냥 object인 듯 하다. 이를 이렇게 콜하면 된다. 
+// var latlng = map.getCenter(); 
+// console.log("latlng variable is " + latlng._lat + 'and' + latlng._lng); // latlng 의 자료형이 따로 없고 그냥 object인 듯 하다. 이를 이렇게 콜하면 된다. 
 </script>

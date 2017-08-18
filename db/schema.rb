@@ -51,11 +51,13 @@ ActiveRecord::Schema.define(version: 20170813120148) do
     t.integer  "type_id"
     t.string   "title"
     t.string   "name"
-    t.text     "price"
+    t.integer  "price"
     t.text     "date"
-    t.text     "money"
+    t.integer  "money"
     t.text     "reason"
     t.text     "content"
+    t.float    "lat"
+    t.float    "lng"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

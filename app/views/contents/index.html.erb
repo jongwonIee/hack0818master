@@ -1,27 +1,6 @@
 <h1>사요</h1>
 
-<% if !@result %>
-    지역을 선택하세요
-<% else %>
-    <% @result.each do |p| %>
-        <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
-        <br>
-    <% end %>
-<% end %>    
-
-<% if @place %>
-    <%= form_tag do %>
-        <%= select_tag 'input_district', options_for_select(  @district.collect{ |u| [u.name, u.name] }), onchange: "this.form.submit();" %>
-    <% end %>
-<% else %>
-    <%= form_tag do %>
-        <%= select_tag 'input_district', options_for_select(  @district.collect{ |u| [u.name, u.name] }.insert(0, [("선택하세요"),("선택하세요")])), selected: ("선택하세요"), onchange: "this.form.submit();" %>
-    <% end %>
-<% end %>
-
-
-
-<div id=outer>
+<link rel="stylesheet" href="contents.css">
 
 검색
 <%= form_tag posts_path, :method => 'get' do %>
@@ -31,17 +10,42 @@
     </p>
 <% end %>
 
-
-<br>
-전체 글
-<br>
-<% @posts.each do |p| %>
-<div id=inner>
-    <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
-    <% if can? :update, p %>
-        | <%=link_to '수정하기', edit_post_path(p)%>
-        | <%= link_to '삭제 하기', p, method: :delete, data: { confirm: '정말 지우시겠습니까?' } %>
+        <div id=outer>
+지역 선택
+<% if @place %>
+    <%= form_tag do %>
+        <%= select_tag 'input_district', options_for_select(  @district.collect{ |u| [u.name, u.name] }), onchange: "this.form.submit();" %>
     <% end %>
-    </div>
-    <br>
+<% else %>
+    <%= form_tag do %>
+        <%= select_tag 'input_district', options_for_select(  @district.collect{ |u| [u.name, u.name] }.insert(0, [("선택하세요"),("선택하세요")])), selected: ("선택하세요"), onchange: "this.form.submit();" %>
+    <% end %>
 <% end %>
+</div>
+<div id=inner>
+운동 유형 선택
+<% if @place %>
+    <%= form_tag do %>
+        <%= select_tag 'input_type', options_for_select(  @type.collect{ |u| [u.name, u.name] }), onchange: "this.form.submit();" %>
+    <% end %>
+<% else %>
+    <%= form_tag do %>
+        <%= select_tag 'input_type', options_for_select(  @type.collect{ |u| [u.name, u.name] }.insert(0, [("선택하세요"),("선택하세요")])), selected: ("선택하세요"), onchange: "this.form.submit();" %>
+    <% end %>
+<% end %>
+</div>
+<div id=result>
+<% if !@result %>
+    운동 유형 선택 <br>
+<% else %>
+    <% @result.each do |p| %>
+        <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
+        <br>
+    <% end %>
+<% end %>    
+</div>
+
+
+
+
+

@@ -14,15 +14,12 @@ Rails.application.routes.draw do
   
    resources :posts do
    resources :comments, only: [:create]
-   resources :searches
   end
   
   get 'contents/index'
   post 'contents/index'
   
   resources :contents, except: [:create] do
-  resources :comments, only: [:create]
-  resources :searches
   end
 
 
@@ -33,6 +30,8 @@ Rails.application.routes.draw do
   
   get 'maps/main' => 'maps#main'
   post 'maps/main' => 'maps#main'
+  post 'maps/main/:lat' => 'maps#main' # To pass JS variable 
+  post 'maps/main/:lng' => 'maps#main'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

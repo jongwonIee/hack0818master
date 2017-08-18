@@ -11,9 +11,6 @@ load_and_authorize_resource
   def edit
   end
 
-  def edit
-  end
-
   def update
   end
 
@@ -23,7 +20,7 @@ load_and_authorize_resource
     
     private
     def comment_params
-       params.require(:comment).permit(:content) 
+      params.require(:comment).permit(:content) 
     end
     
 end

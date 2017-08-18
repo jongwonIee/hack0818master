@@ -39,6 +39,7 @@ load_and_authorize_resource
     @posts = Post.search(params[:search])
     
     @comment = Comment.new
+
     
   end
 
@@ -50,10 +51,20 @@ load_and_authorize_resource
 
   def create
     post = Post.new(post_params)
-    user_id = current_user.id
-    post.save
+    post.user_id = current_user.id
+    
+    # post.lat = params[:lat] #지도에서 선택한 체육관 좌표를 같이 저장. 
+    # post.lng = params[:lng]
+    # if post.lat.nil? || post.lng.nil? #좌표 선택 안했으면 저장하지 않고 돌려보냄. 
+      # blabla
+    # else
+      post.save
+      
+      redirect_to posts_path
+    # end
+    
+    
 
-    redirect_to posts_path
   end
 
   def show
@@ -82,6 +93,6 @@ load_and_authorize_resource
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :category_id, :type_id, :user_id)
+    params.require(:post).permit(:title, :name, :price, :date, :money, :reason, :content, :category_id, :type_id, :user_id)
     end
  end

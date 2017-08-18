@@ -8,11 +8,14 @@ class CreatePosts < ActiveRecord::Migration
       
       t.string :title
       t.string :name
-      t.text :price
+      t.integer :price
       t.text :date
-      t.text :money
+      t.integer :money
       t.text :reason
       t.text :content
+      
+      t.float :lat
+      t.float :lng
 
       t.timestamps null: false
     end

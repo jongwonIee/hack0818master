@@ -5,13 +5,18 @@ load_and_authorize_resource
   
   
     @district = Category.all
-    @query = params[:input_district]
+    @type = Type.all
     
-    if !@query
-      @reuslt = ''
-    else
-      @result = Post.joins(:category).merge(Category.where(name: @query))
-    end      
+    @query_district = params[:input_district]
+    @query_type = params[:input_type]
+    
+    if !@query_district && !@query_type
+      @result = []
+    elsif @query_district
+      @result = Post.joins(:category).merge(Category.where(name: @query_district))
+    elsif @query_type
+      @result = Post.joins(:type).merge(Type.where(name: @query_type))
+    end     
         
     @posts = Post.all
     @posts_1=@posts.where(category_id:1)
