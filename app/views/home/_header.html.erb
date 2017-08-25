@@ -17,11 +17,11 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav custom-navbar-nav-attr">
           <% if !current_user %>
-              <%= link_to '로그인',  new_user_session_path, class: "nav-item nav-link custom-nav-item-attr" %>
-              <%= link_to '회원가입', new_user_registration_path, class: "nav-item nav-link custom-nav-item-attr" %>
+              <%= link_to '로그인', new_session_path, class: "nav-item nav-link custom-nav-item-attr" %>
+              <%= link_to '회원가입', new_user_path, class: "nav-item nav-link custom-nav-item-attr" %>
           <% else %>
-              <%= link_to '로그아웃', destroy_user_session_path, method: 'delete', class: "nav-item nav-link custom-nav-item-attr" %>
-              <%= link_to '마이페이지', user_mypage_path, class: "nav-item nav-link custom-nav-item-attr" %>
+              <%= link_to '로그아웃', logout_path, method: 'delete', class: "nav-item nav-link custom-nav-item-attr" %>
+              <%= link_to '마이페이지', users_mypage_path, class: "nav-item nav-link custom-nav-item-attr" %>
           <% end %>
         </div>
       </div>

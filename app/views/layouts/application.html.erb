@@ -14,7 +14,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>    <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, user-scalable=no">
-  
+
+  <!--네이버 지도 api 헤더 -->
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=l1KKn8JCK299oH24Ubda"></script>
+  <!--JQuery 스크립트 -->
+  <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
 </head>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top custom-nav-attr">
@@ -26,11 +30,11 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav custom-navbar-nav-attr">
           <% if !current_user %>
-              <%= link_to '로그인',  new_user_session_path, class: "nav-item nav-link custom-nav-item-attr" %>
-              <%= link_to '회원가입', new_user_registration_path, class: "nav-item nav-link custom-nav-item-attr" %>
+              <%= link_to '로그인', new_session_path, class: "nav-item nav-link custom-nav-item-attr" %>
+              <%= link_to '회원가입', new_user_path, class: "nav-item nav-link custom-nav-item-attr" %>
           <% else %>
-              <%= link_to '로그아웃', destroy_user_session_path, method: 'delete', class: "nav-item nav-link custom-nav-item-attr" %>
-              <%= link_to '마이페이지', user_mypage_path, class: "nav-item nav-link custom-nav-item-attr" %>
+              <%= link_to '로그아웃', logout_path, method: 'delete', class: "nav-item nav-link custom-nav-item-attr" %>
+              <%= link_to '마이페이지', users_mypage_path, class: "nav-item nav-link custom-nav-item-attr" %>
           <% end %>
         </div>
       </div>

@@ -1,19 +1,58 @@
-// Place all the styles related to the contents controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-#inner{
-    float:right;
-    padding-right:20px;
+.buylogo {
+    width: 12%;
+    height: 12%;
+    display: block;
+    margin: 0% auto 5%;
+    border-bottom: darkgrey 6px solid;
 }
 
-#outer{
-    float:right;
-    padding-right:100px;
+.buyinner{
+    display: inline;
 }
 
-#result{
+.buyouter{
+    display: inline;
+}
+
+.buyresult{
     text-align:center;
-    padding-top:70px;
-    
+    padding-top:100px;
+    border: #ffffff 15px double;
+    border-radius: 73px; 
+    background-color: #abdcc1;
+    width: 40%;
+    margin: 0% 30%;
+    display: block;
+}
+
+.buyway {
+    width: 60%;
+    margin: 0% 20% 5%;
+}
+
+.buysearch {
+    float: right;
+    margin-right: 30%;
+}
+
+.buyoption {
+    float: left;
+    margin-left: 30%;
+}
+
+.buycontainer {
+    padding: 4%;
+    border: black 4px solid;
+    margin: 0% 10%;
+    height: 40em;
+    border-radius: 73px;
+    border: #abdcc1 15px double;
+}
+
+.smallcontainer {
+    border-radius: 18px;
+    height: 13em;
+    margin: -3% 14%;
+    width: 73%;
+    background-color: rgba(108, 140, 122, 0.28);
 }

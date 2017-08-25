@@ -37,8 +37,6 @@ var OUR_SELLER_DB = []; //DB의 정보를 꺼내서 json data로 만든다.
     OUR_SELLER_DB.push(<%=raw p.to_json %>);
 <% end %> 
 
-
-
 var bounds = map.getBounds(),
     southWest = bounds.getSW(),
     northEast = bounds.getNE(),
@@ -53,7 +51,6 @@ for (var item in OUR_SELLER_DB) {
     var position = new naver.maps.LatLng(
         OUR_SELLER_DB[item]["lat"],
         OUR_SELLER_DB[item]['lng']);
-
 
 
     var marker = new naver.maps.Marker({
@@ -176,9 +173,8 @@ naver.maps.Event.addListener(map, 'click', function(e) {
       url: "/maps/main"
     });
     
-    // console.log(markerList[0]['position']['_lat'] + 'and' + markerList[0]['position']['_lng']); //이건 이렇게 access하면 된다. 
+    console.log(markerList[0]['position']['_lat'] + 'and' + markerList[0]['position']['_lng']); //이건 이렇게 access하면 된다. 
 });
-
 
 
 // var latlng = map.getCenter(); 

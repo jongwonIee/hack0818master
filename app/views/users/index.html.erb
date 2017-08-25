@@ -1,0 +1,11 @@
+<% @posts.each do |p| %>
+    <a href="/posts/<%= p.id %>">link</a>
+    <%= p.title %>
+    <%= p.content %>
+    <% if current_user %>
+        <% if Favorite.exists?(post_id: p.id, user_id: current_user.id) %>
+            <%= button_to '관심강의에서제거', users_favorites_delete_path(u_id: current_user.id, c_id: p.id),
+                          method: :post, :onClick => 'alert("관심강의에서 제거되었습니다!")' %>
+        <% end %>
+    <% end %>
+<% end %>

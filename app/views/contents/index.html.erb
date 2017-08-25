@@ -1,63 +1,40 @@
-<h1>사요</h1>
+<%= image_tag ('사요'), class: "buylogo" %>
 
-<link rel="stylesheet" href="contents.css">
-
-검색
-<%= form_tag posts_path, :method => 'get' do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "검색", :name => nil %>
-    </p>
-<% end %>
-
-<% if current_user %>
-    <% if Favorite.exists?(course_id: c.id, user_id: current_user.id) %>
-        <%= button_to '관심강의에서제거', users_favorites_delete_path(u_id: current_user, c_id: c.id),
-                      method: :post, :onClick => 'alert("관심강의에서 제거되었습니다!")' %>
-    <% else %>
-        <%#= button_to '관심강의에다추가', {controller: 'users', action: 'favorites_add', u_id: current_user.id, c_id: c.id},
-                method: :post, :onClick => 'alert("관심강의에 추가되었습니다!")' %>
-        <%= button_to '관심강의에다추가',  users_favorites_add_path(u_id: current_user.id, c_id: c.id),
-                      method: :post, :onClick => 'alert("관심강의에 추가되었습니다!")' %>
+<div class="buycontainer">
+    <%= image_tag ('방법1'), class: "buyway" %>
+    <div class="buysearch"><br>
+    <%= form_tag posts_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "검색", :name => nil %>
     <% end %>
-<% end %>
-
-<div id=outer>
-지역 선택
-<% if @place %>
-    <%= form_tag do %>
-        <%= select_tag 'input_district', options_for_select(  @district.collect{ |u| [u.name, u.name] }), onchange: "this.form.submit();" %>
-    <% end %>
-<% else %>
-    <%= form_tag do %>
-        <%= select_tag 'input_district', options_for_select(  @district.collect{ |u| [u.name, u.name] }.insert(0, [("선택하세요"),("선택하세요")])), selected: ("선택하세요"), onchange: "this.form.submit();" %>
-    <% end %>
-<% end %>
+    </div>
+<div class="smallcontainer">
+        <div class="buyoption">
+            <div class="buyouter">
+                
+            지역 선택
+            <% if @place %>
+                <%= form_tag do %>
+                    <%= select_tag 'input_district', options_for_select(  @district.collect{ |u| [u.name, u.name] }), onchange: "this.form.submit();" %>
+                <% end %>
+            <% else %>
+                <%= form_tag do %>
+                    <%= select_tag 'input_district', options_for_select(  @district.collect{ |u| [u.name, u.name] }.insert(0, [("선택하세요"),("선택하세요")])), selected: ("선택하세요"), onchange: "this.form.submit();" %>
+                <% end %>
+            <% end %>
+            </div><br>
+            <div class="buyinner">
+            운동유형 선택
+            <% if @place %>
+                <%= form_tag do %>
+                    <%= select_tag 'input_type', options_for_select(  @type.collect{ |u| [u.name, u.name] }), onchange: "this.form.submit();" %>
+                <% end %>
+            <% else %>
+                <%= form_tag do %>
+                    <%= select_tag 'input_type', options_for_select(  @type.collect{ |u| [u.name, u.name] }.insert(0, [("선택하세요"),("선택하세요")])), selected: ("선택하세요"), onchange: "this.form.submit();" %>
+                <% end %>
+            <% end %>
+            </div>
+        </div>
+    </div>
 </div>
-<div id=inner>
-운동 유형 선택
-<% if @place %>
-    <%= form_tag do %>
-        <%= select_tag 'input_type', options_for_select(  @type.collect{ |u| [u.name, u.name] }), onchange: "this.form.submit();" %>
-    <% end %>
-<% else %>
-    <%= form_tag do %>
-        <%= select_tag 'input_type', options_for_select(  @type.collect{ |u| [u.name, u.name] }.insert(0, [("선택하세요"),("선택하세요")])), selected: ("선택하세요"), onchange: "this.form.submit();" %>
-    <% end %>
-<% end %>
-</div>
-<div id=result>
-<% if !@result %>
-    운동 유형 선택 <br>
-<% else %>
-    <% @result.each do |p| %>
-        <%= p.title %> | <%=link_to '이 글 보기', post_path(p.id)%>
-        <br>
-    <% end %>
-<% end %>    
-</div>
-
-
-
-
-

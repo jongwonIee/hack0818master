@@ -19,6 +19,9 @@ class MapsController < ApplicationController
     @result = Post.all #***** 추후 카테고리분류 필터 된 결과값으로 바꿔주어야 함! 
     @db_json = @result.as_json
     
+    
+    
+    
     puts "****************log*************"
     @test_lat = params[:lat]
     @test_lng = params[:lng]
@@ -26,7 +29,6 @@ class MapsController < ApplicationController
     
     puts @test_lat, @test_lat.nil?
     puts @test_lng, @test_lng.nil?
-    puts @db_json[0].to_json
   end
   
 end

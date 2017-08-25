@@ -2,24 +2,99 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#search{
+#post_search{
     padding-right:20px;
-}
-
-#inner{
-    text-align:center;
-    position:relative;
+    padding-left:30px;
+    margin-left:35%;
 }
 
 #new{
     float:left;
+    padding-left:70px;
     
 }
 
 h1{
     padding-left:20px;
+    
 }
 
-body{
-    padding-left:30px;
+h3{
+    padding-left:200px;
 }
+
+#content{
+    text-align:center;
+    
+    border: #ffffff 15px double;
+    border-radius: 73px;
+    background-color: #b6c8da;
+    width: 40%;
+    margin: 0% 30%;
+}
+
+#comment{
+    float:right;
+    padding-right:20%;
+
+}
+
+#com_content{
+    border:#b6c8da 2px solid;
+    text-align:center;
+    border-radius: 10px;
+}
+
+#name{
+    padding-left:20%;
+    
+    color: #466995;
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.selllogo {
+    width: 12%;
+    height: 12%;
+    display: block;
+    margin: 0% auto 5%;
+    border-bottom: darkgrey 6px solid;
+}
+
+#form{
+    text-align:center;
+    
+    border: #ffffff 15px double;
+    border-radius: 73px;
+    background-color: #b6c8da;
+    width: 40%;
+    margin: 0% 50%;
+
+}
+
+.step1{
+    width: 40%;
+    padding-left:5%;
+    border-radius: 21px;
+}
+
+.step2{
+    padding-top:5%;
+    width: 40%;
+    padding-left:5%;
+}
+
+#category{
+    padding-left:10%;
+}
+
+.sell1{
+    padding: 2%;
+    border: black 4px solid;
+    margin: 0% 10%;
+    height: 40em;
+    border-radius: 73px;
+    border: #b6c8da 15px double;
+}
+
